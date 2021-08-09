@@ -1,7 +1,7 @@
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_l2_policy" {
+  source = "netascode/l2-policy/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  name       = "L2POL1"
+  vlan_scope = "portlocal"
+  qinq       = "edgePort"
 }

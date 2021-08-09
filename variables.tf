@@ -1,5 +1,5 @@
 variable "name" {
-  description = "Tenant name."
+  description = "L2 interface policy name."
   type        = string
 
   validation {
@@ -8,24 +8,24 @@ variable "name" {
   }
 }
 
-variable "alias" {
-  description = "Tenant alias."
+variable "vlan_scope" {
+  description = "VLAN scope. Choices: `global`, `portlocal`."
   type        = string
-  default     = ""
+  default     = "global"
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.alias))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = contains(["global", "portlocal"], var.vlan_scope)
+    error_message = "Allowed values: `global` or `portlocal`."
   }
 }
 
-variable "description" {
-  description = "Tenant description."
+variable "qinq" {
+  description = "QinQ mode. Choices: `disabled`, `edgePort`, `corePort`, `doubleQtagPort`."
   type        = string
-  default     = ""
+  default     = "disabled"
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
+    condition     = contains(["disabled", "edgePort", "corePort", "doubleQtagPort"], var.qinq)
+    error_message = "Allowed values: `disabled`, `edgePort`, `corePort` or `doubleQtagPort`."
   }
 }

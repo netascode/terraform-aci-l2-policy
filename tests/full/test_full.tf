@@ -14,35 +14,35 @@ terraform {
 module "main" {
   source = "../.."
 
-  name        = "ABC"
-  alias       = "ALIAS"
-  description = "DESCR"
+  name       = "L2POL1"
+  vlan_scope = "portlocal"
+  qinq       = "edgePort"
 }
 
-data "aci_rest" "fvTenant" {
-  dn = "uni/tn-ABC"
+data "aci_rest" "l2IfPol" {
+  dn = "uni/infra/l2IfP-${module.main.name}"
 
   depends_on = [module.main]
 }
 
-resource "test_assertions" "fvTenant" {
-  component = "fvTenant"
+resource "test_assertions" "l2IfPol" {
+  component = "l2IfPol"
 
   equal "name" {
     description = "name"
-    got         = data.aci_rest.fvTenant.content.name
-    want        = "ABC"
+    got         = data.aci_rest.l2IfPol.content.name
+    want        = module.main.name
   }
 
-  equal "nameAlias" {
-    description = "nameAlias"
-    got         = data.aci_rest.fvTenant.content.nameAlias
-    want        = "ALIAS"
+  equal "vlanScope" {
+    description = "vlanScope"
+    got         = data.aci_rest.l2IfPol.content.vlanScope
+    want        = "portlocal"
   }
 
-  equal "descr" {
-    description = "descr"
-    got         = data.aci_rest.fvTenant.content.descr
-    want        = "DESCR"
+  equal "qinq" {
+    description = "qinq"
+    got         = data.aci_rest.l2IfPol.content.qinq
+    want        = "edgePort"
   }
 }

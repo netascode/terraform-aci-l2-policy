@@ -1,9 +1,9 @@
-resource "aci_rest" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest" "l2IfPol" {
+  dn         = "uni/infra/l2IfP-${var.name}"
+  class_name = "l2IfPol"
   content = {
     name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    vlanScope = var.vlan_scope
+    qinq      = var.qinq
   }
 }
