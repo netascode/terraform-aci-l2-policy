@@ -1,5 +1,6 @@
 module "aci_l2_policy" {
-  source = "netascode/l2-policy/aci"
+  source  = "netascode/l2-policy/aci"
+  version = ">= 0.0.1"
 
   name       = "L2POL1"
   vlan_scope = "portlocal"
