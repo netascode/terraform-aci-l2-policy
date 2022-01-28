@@ -13,13 +13,12 @@ Location in GUI:
 ```hcl
 module "aci_l2_policy" {
   source  = "netascode/l2-policy/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   name       = "L2POL1"
   vlan_scope = "portlocal"
   qinq       = "edgePort"
 }
-
 ```
 
 ## Requirements
@@ -27,13 +26,13 @@ module "aci_l2_policy" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 0.2.0 |
+| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 2.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 0.2.0 |
+| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 2.0.0 |
 
 ## Inputs
 
@@ -54,5 +53,5 @@ module "aci_l2_policy" {
 
 | Name | Type |
 |------|------|
-| [aci_rest.l2IfPol](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest_managed.l2IfPol](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->

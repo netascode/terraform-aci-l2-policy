@@ -1,4 +1,4 @@
-resource "aci_rest" "l2IfPol" {
+resource "aci_rest_managed" "l2IfPol" {
   dn         = "uni/infra/l2IfP-${var.name}"
   class_name = "l2IfPol"
   content = {
