@@ -33,4 +33,11 @@ resource "test_assertions" "l2IfPol" {
     got         = data.aci_rest_managed.l2IfPol.content.name
     want        = module.main.name
   }
+
+  equal "vepa" {
+    description = "vepa"
+    got         = data.aci_rest_managed.l2IfPol.content.vepa
+    want        = "disabled"
+  }
+
 }
