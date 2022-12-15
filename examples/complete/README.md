@@ -19,7 +19,7 @@ module "aci_l2_policy" {
   name             = "L2POL1"
   vlan_scope       = "portlocal"
   qinq             = "edgePort"
-  reflective_delay = true
+  reflective_relay = true
 }
 ```
 <!-- END_TF_DOCS -->
