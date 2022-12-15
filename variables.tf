@@ -31,7 +31,7 @@ variable "qinq" {
 }
 
 
-variable "reflective_delay" {
+variable "reflective_relay" {
   description = "Reflective Relay (802.1Qbg)"
   type        = bool
   default     = false

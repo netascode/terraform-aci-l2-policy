@@ -19,7 +19,7 @@ module "main" {
   name             = "L2POL1"
   vlan_scope       = "portlocal"
   qinq             = "edgePort"
-  reflective_delay = true
+  reflective_relay = true
 }
 
 data "aci_rest_managed" "l2IfPol" {
