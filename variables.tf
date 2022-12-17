@@ -29,3 +29,10 @@ variable "qinq" {
     error_message = "Allowed values: `disabled`, `edgePort`, `corePort` or `doubleQtagPort`."
   }
 }
+
+
+variable "reflective_relay" {
+  description = "Reflective Relay (802.1Qbg)"
+  type        = bool
+  default     = false
+}

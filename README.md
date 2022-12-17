@@ -15,9 +15,10 @@ module "aci_l2_policy" {
   source  = "netascode/l2-policy/aci"
   version = ">= 0.1.0"
 
-  name       = "L2POL1"
-  vlan_scope = "portlocal"
-  qinq       = "edgePort"
+  name             = "L2POL1"
+  vlan_scope       = "portlocal"
+  qinq             = "edgePort"
+  reflective_relay = true
 }
 ```
 
@@ -41,6 +42,7 @@ module "aci_l2_policy" {
 | <a name="input_name"></a> [name](#input\_name) | L2 interface policy name. | `string` | n/a | yes |
 | <a name="input_vlan_scope"></a> [vlan\_scope](#input\_vlan\_scope) | VLAN scope. Choices: `global`, `portlocal`. | `string` | `"global"` | no |
 | <a name="input_qinq"></a> [qinq](#input\_qinq) | QinQ mode. Choices: `disabled`, `edgePort`, `corePort`, `doubleQtagPort`. | `string` | `"disabled"` | no |
+| <a name="input_reflective_relay"></a> [reflective\_relay](#input\_reflective\_relay) | Reflective Relay (802.1Qbg) | `bool` | `false` | no |
 
 ## Outputs
 

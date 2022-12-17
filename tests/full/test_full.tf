@@ -16,9 +16,10 @@ terraform {
 module "main" {
   source = "../.."
 
-  name       = "L2POL1"
-  vlan_scope = "portlocal"
-  qinq       = "edgePort"
+  name             = "L2POL1"
+  vlan_scope       = "portlocal"
+  qinq             = "edgePort"
+  reflective_relay = true
 }
 
 data "aci_rest_managed" "l2IfPol" {
@@ -46,5 +47,11 @@ resource "test_assertions" "l2IfPol" {
     description = "qinq"
     got         = data.aci_rest_managed.l2IfPol.content.qinq
     want        = "edgePort"
+  }
+
+  equal "vepa" {
+    description = "vepa"
+    got         = data.aci_rest_managed.l2IfPol.content.vepa
+    want        = "enabled"
   }
 }

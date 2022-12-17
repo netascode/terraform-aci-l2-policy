@@ -5,5 +5,6 @@ resource "aci_rest_managed" "l2IfPol" {
     name      = var.name
     vlanScope = var.vlan_scope
     qinq      = var.qinq
+    vepa      = var.reflective_relay == true ? "enabled" : "disabled"
   }
 }
